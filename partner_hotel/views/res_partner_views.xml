@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_res_partner_filter" model="ir.ui.view">
+        <field name="name">res.partner.select</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter" />
+        <field name="priority" eval="99" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='type_company']" position="replace">
+                <filter
+                    string="Companies"
+                    name="type_company"
+                    domain="[('is_company', '=', True), ('is_hotel', '=', False)]"
+                />
+                <filter
+                    string="Hotels"
+                    name="type_hotel"
+                    domain="[('is_hotel', '=', True)]"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
